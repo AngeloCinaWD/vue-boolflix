@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+        <title>Boolflix</title>
+    </head>
+    <body>
+
+      <div id="app">
+        <input v-model="inputSearch" type="text" name="" value="" placeholder="cerca un film">
+        <button type="button" name="button" @click="cercaFilm">Cerca</button>
+        <div v-for ="movie in moviesDb">
+          <span>{{movie.title}}</span> <br>
+          <span>{{movie.original_title}} </span> <br>
+          <span>{{movie.original_language}} </span> <br>
+          <span>{{movie.vote_average}} </span> <br>
+        </div>
+
+      </div>
+
+      <script src="js/script.js"></script>
+    </body>
+</html>
