@@ -10,6 +10,18 @@ var app = new Vue ({ //instanzio vue
       .then(risposta => {
         console.log(risposta.data.results);
         this.moviesDb = risposta.data.results;
+        this.roundRate();
+        this.languageFlag();
+      });
+    },
+    roundRate: function () {
+      this.moviesDb.forEach((item) => {
+        item.vote_average = Math.ceil(item.vote_average / 2);
+      });
+    },
+    languageFlag: function () {
+      this.moviesDb.forEach((item) => {
+        item.original_language = "img/"+item.original_language+".svg";
       });
     }
   }

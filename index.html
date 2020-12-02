@@ -12,11 +12,13 @@
       <div id="app">
         <input v-model="inputSearch" type="text" name="" value="" placeholder="cerca un film">
         <button type="button" name="button" @click="cercaFilm">Cerca</button>
-        <div v-for ="movie in moviesDb">
-          <span>{{movie.title}}</span> <br>
-          <span>{{movie.original_title}} </span> <br>
-          <span>{{movie.original_language}} </span> <br>
-          <span>{{movie.vote_average}} </span> <br>
+        <div id="film">
+          <div v-for ="movie in moviesDb" class="contenitore">
+            <div>{{movie.title}}</div>
+            <div>{{movie.original_title}} </div>
+            <div> <img :src="movie.original_language" alt=""> </div>
+            <div>{{movie.vote_average}}</div>
+          </div>
         </div>
 
       </div>

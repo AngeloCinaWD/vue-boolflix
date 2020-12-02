@@ -3,3 +3,21 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+#film {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.contenitore {
+  width: calc(100% / 4);
+  margin-bottom: 20px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.contenitore img {
+  width: 50px;
+  height: auto;
+}
