@@ -25,34 +25,40 @@
           <div v-for ="movie in moviesDb" class="contenitore">
             <div class="locandina"> <img :src="movie.poster_path == 'https://image.tmdb.org/t/p/w342null' ? 'img/Boolflix.png' : movie.poster_path" alt=""> </div>
             <div class="informazioni">
-              <div class="white">Titolo: {{movie.title}}</div>
-              <div class="white" v-if="movie.title != movie.original_title">Titolo originale: {{movie.original_title}} </div>
-              <div> <img :src="movie.original_language" alt=""> </div>
+              <div class="white"> <span class="bold">Titolo:</span>  {{movie.title}}</div>
+              <div class="white" v-if="movie.title != movie.original_title"> <span class="bold">Titolo originale:</span> {{movie.original_title}} </div>
+              <div class="white overview"><span class="bold">Overview:</span> {{movie.overview}}</div>
               <div>
-                <span v-if="movie.vote_average != 0" class="white">Voto:</span>
+                <span v-if="movie.vote_average != 0" class="white bold">Voto:</span>
                 <i class="fas fa-star" v-if="movie.vote_average > 0"></i>
                 <i class="fas fa-star" v-if="movie.vote_average > 1"></i>
                 <i class="fas fa-star" v-if="movie.vote_average > 2"></i>
                 <i class="fas fa-star" v-if="movie.vote_average > 3"></i>
                 <i class="fas fa-star" v-if="movie.vote_average > 4"></i>
-                <span v-if="movie.vote_average == 0" class="white">Rating not available</span>
+                <span v-if="movie.vote_average == 0" class="white bold">Rating not available</span>
               </div>
+              <div> <span class="bold white">Lingua originale:</span> <img :src="movie.original_language" alt=""> </div>
             </div>
           </div>
-          <!-- <div v-for ="serie in seriesDb" class="contenitore">
-            <div> <img :src="serie.poster_path == 'https://image.tmdb.org/t/p/w342null' ? 'img/Image-Not-Available.png' : serie.poster_path" alt=""> </div>
-            <div>{{serie.name}}</div>
-            <div>{{serie.original_name}} </div>
-            <div> <img :src="serie.original_language" alt=""> </div>
-            <div>
-              <i class="fas fa-star" v-if="serie.vote_average > 0"></i>
-              <i class="fas fa-star" v-if="serie.vote_average > 1"></i>
-              <i class="fas fa-star" v-if="serie.vote_average > 2"></i>
-              <i class="fas fa-star" v-if="serie.vote_average > 3"></i>
-              <i class="fas fa-star" v-if="serie.vote_average > 4"></i>
-              <span v-if="serie.vote_average == 0">Rating not available</span>
+
+          <div v-for ="serie in seriesDb" class="contenitore">
+            <div class="locandina"> <img :src="serie.poster_path == 'https://image.tmdb.org/t/p/w342null' ? 'img/Boolflix.png' : serie.poster_path" alt=""> </div>
+            <div class="informazioni">
+              <div class="white"> <span class="bold">Titolo:</span>  {{serie.name}}</div>
+              <div class="white" v-if="serie.name != serie.original_name"> <span class="bold">Titolo originale:</span> {{serie.original_name}} </div>
+              <div class="white overview"><span class="bold">Overview:</span> {{serie.overview}}</div>
+              <div>
+                <span v-if="serie.vote_average != 0" class="white bold">Voto:</span>
+                <i class="fas fa-star" v-if="serie.vote_average > 0"></i>
+                <i class="fas fa-star" v-if="serie.vote_average > 1"></i>
+                <i class="fas fa-star" v-if="serie.vote_average > 2"></i>
+                <i class="fas fa-star" v-if="serie.vote_average > 3"></i>
+                <i class="fas fa-star" v-if="serie.vote_average > 4"></i>
+                <span v-if="serie.vote_average == 0" class="white bold">Rating not available</span>
+              </div>
+              <div> <span class="bold white">Lingua originale:</span> <img :src="serie.original_language" alt=""> </div>
             </div>
-          </div> -->
+          </div>
         </div>
 
       </div>

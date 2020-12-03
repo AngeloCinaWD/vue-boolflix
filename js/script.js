@@ -18,9 +18,9 @@ var app = new Vue ({ //instanzio vue
         axios.all([requestMovies, requestSeries])
         .then(axios.spread((...responses) => {
           this.moviesDb = responses[0].data.results;
-          console.log('THIS.MOVIESDB', this.moviesDb)
+          // console.log('THIS.MOVIESDB', this.moviesDb)
           this.seriesDb = responses[1].data.results;
-          console.log('THIS.SERIESDB', this.seriesDb)
+          // console.log('THIS.SERIESDB', this.seriesDb)
           this.roundRate();
           this.languageFlag();
           this.resizePoster();
