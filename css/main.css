@@ -16,9 +16,15 @@
   margin-bottom: 20px;
   border: 1px solid black;
   text-align: center;
+  padding: 20px;
 }
 
-.contenitore img {
+.contenitore div:nth-of-type(1) img {
+  width: 185px;
+  height: 278px;
+}
+
+.contenitore div:nth-of-type(4) img {
   width: 25px;
   height: auto;
 }

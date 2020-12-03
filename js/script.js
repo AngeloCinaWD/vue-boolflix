@@ -22,6 +22,7 @@ var app = new Vue ({ //instanzio vue
         console.log('THIS.SERIESDB', this.seriesDb)
         this.roundRate();
         this.languageFlag();
+        this.resizePoster();
       }))
     },
     roundRate: function () {
@@ -38,6 +39,14 @@ var app = new Vue ({ //instanzio vue
       });
       this.seriesDb.forEach((item) => {
         item.original_language = "img/"+item.original_language+".svg";
+      });
+    },
+    resizePoster: function () {
+      this.moviesDb.forEach((item) => {
+        item.poster_path = "https://image.tmdb.org/t/p/w185"+item.poster_path;
+      });
+      this.seriesDb.forEach((item) => {
+        item.poster_path = "https://image.tmdb.org/t/p/w185"+item.poster_path;
       });
     }
   }
