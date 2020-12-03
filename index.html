@@ -30,6 +30,19 @@
               <span v-if="movie.vote_average == 0">Rating not available</span>
             </div>
           </div>
+          <div v-for ="serie in seriesDb" class="contenitore">
+            <div>{{serie.name}}</div>
+            <div>{{serie.original_name}} </div>
+            <div> <img :src="serie.original_language" alt=""> </div>
+            <div>
+              <i class="fas fa-star" v-if="serie.vote_average > 0"></i>
+              <i class="fas fa-star" v-if="serie.vote_average > 1"></i>
+              <i class="fas fa-star" v-if="serie.vote_average > 2"></i>
+              <i class="fas fa-star" v-if="serie.vote_average > 3"></i>
+              <i class="fas fa-star" v-if="serie.vote_average > 4"></i>
+              <span v-if="serie.vote_average == 0">Rating not available</span>
+            </div>
+          </div>
         </div>
 
       </div>
