@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 ">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+        <title>Boolflix</title>
+    </head>
+    <body>
+
+      <div id="app">
+        <header>
+          <div>
+            <span> BOOLFLIX </span>
+            <input v-model="inputSearch" type="text" name="" value="" placeholder="search" @keyup="cercaFilm">
+          </div>
+        </header>
+
+        <div id="film">
+          <div v-for ="movie in totalDb" class="contenitore" @mouseenter="genresCast(movie.type, movie.id)">
+            <div class="locandina"> <img :src="movie.poster_path == 'https://image.tmdb.org/t/p/w342null' ? 'img/Boolflix.png' : movie.poster_path" alt=""> </div>
+            <div class="informazioni">
+              <div class="white"> <span class="bold">Titolo:</span>  {{movie.title || movie.name}}</div>
+              <div class="white" v-if="movie.title != movie.original_title"> <span class="bold">Titolo originale:</span> {{movie.original_title || movie.original_name}} </div>
+              <div class="white overview" v-if="movie.overview != ''"><span class="bold">Overview:</span> {{movie.overview}}</div>
+              <div>
+                <span v-if="movie.vote_average != 0" class="white bold">Rating:</span>
+                <i class="fas fa-star" v-if="movie.vote_average > 0"></i>
+                <i class="fas fa-star" v-if="movie.vote_average > 1"></i>
+                <i class="fas fa-star" v-if="movie.vote_average > 2"></i>
+                <i class="fas fa-star" v-if="movie.vote_average > 3"></i>
+                <i class="fas fa-star" v-if="movie.vote_average > 4"></i>
+                <span v-if="movie.vote_average == 0" class="white bold">Rating not available</span>
+              </div>
+              <div> <span class="bold white">Lingua originale:</span> <img :src="movie.original_language" alt=""> </div>
+              <div v-for="actor in cast" class="bold white">{{actor.name}};</div>
+              <div v-for="genre in genres" class="bold white">{{genre}};</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <script src="js/script.js"></script>
+    </body>
+</html>
