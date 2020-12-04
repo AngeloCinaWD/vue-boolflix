@@ -21,39 +21,50 @@ var app = new Vue ({ //instanzio vue
           // console.log('THIS.MOVIESDB', this.moviesDb)
           this.seriesDb = responses[1].data.results;
           // console.log('THIS.SERIESDB', this.seriesDb)
-          this.roundRate();
-          this.languageFlag();
-          this.resizePoster();
+          this.arrayManagement();
+          // this.languageFlag();
+          // this.resizePoster();
+          this.totalDb = this.unioneArray();
+          console.log('THIS.TOTALDB', this.totalDb);
         }))
       } else {
         this.moviesDb = [];
         this.seriesDb = [];
+        this.totalDb = [];
       }
-
     },
-    roundRate: function () {
+    arrayManagement: function () {
       this.moviesDb.forEach((item) => {
         item.vote_average = Math.ceil(item.vote_average / 2);
+        item.original_language = "img/"+item.original_language+".svg";
+        item.poster_path = "https://image.tmdb.org/t/p/w342"+item.poster_path;
+        item.type = "movie";
       });
       this.seriesDb.forEach((item) => {
         item.vote_average = Math.ceil(item.vote_average / 2);
+        item.original_language = "img/"+item.original_language+".svg";
+        item.poster_path = "https://image.tmdb.org/t/p/w342"+item.poster_path;
+        item.type = "TVseries";
       });
     },
-    languageFlag: function () {
-      this.moviesDb.forEach((item) => {
-        item.original_language = "img/"+item.original_language+".svg";
-      });
-      this.seriesDb.forEach((item) => {
-        item.original_language = "img/"+item.original_language+".svg";
-      });
-    },
-    resizePoster: function () {
-      this.moviesDb.forEach((item) => {
-        item.poster_path = "https://image.tmdb.org/t/p/w342"+item.poster_path;
-      });
-      this.seriesDb.forEach((item) => {
-        item.poster_path = "https://image.tmdb.org/t/p/w342"+item.poster_path;
-      });
+    // languageFlag: function () {
+    //   this.moviesDb.forEach((item) => {
+    //     item.original_language = "img/"+item.original_language+".svg";
+    //   });
+    //   this.seriesDb.forEach((item) => {
+    //     item.original_language = "img/"+item.original_language+".svg";
+    //   });
+    // },
+    // resizePoster: function () {
+    //   this.moviesDb.forEach((item) => {
+    //     item.poster_path = "https://image.tmdb.org/t/p/w342"+item.poster_path;
+    //   });
+    //   this.seriesDb.forEach((item) => {
+    //     item.poster_path = "https://image.tmdb.org/t/p/w342"+item.poster_path;
+    //   });
+    // },
+    unioneArray: function () {
+      return [...this.moviesDb,...this.seriesDb];
     }
   }
 });
