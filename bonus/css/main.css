@@ -15,7 +15,11 @@ body {
 
 .bold {
   font-weight: bolder;
-  font-size: 18px;
+  font-size: 12px;
+}
+
+.smallSize {
+  font-size: 10px;
 }
 
 #app {
@@ -80,7 +84,7 @@ header input {
 }
 
 .informazioni div {
-  margin: 10px 0;
+  margin: 5px 0;
 }
 
 .overview {

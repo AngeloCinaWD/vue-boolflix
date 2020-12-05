@@ -25,9 +25,9 @@
           <div v-for ="movie in totalDb" class="contenitore" @mouseenter="genresCast(movie.type, movie.id)">
             <div class="locandina"> <img :src="movie.poster_path == 'https://image.tmdb.org/t/p/w342null' ? 'img/Boolflix.png' : movie.poster_path" alt=""> </div>
             <div class="informazioni">
-              <div class="white"> <span class="bold">Titolo:</span>  {{movie.title || movie.name}}</div>
-              <div class="white" v-if="movie.title != movie.original_title"> <span class="bold">Titolo originale:</span> {{movie.original_title || movie.original_name}} </div>
-              <div class="white overview" v-if="movie.overview != ''"><span class="bold">Overview:</span> {{movie.overview}}</div>
+              <div> <span class="white bold">Titolo:</span> <span class="white smallSize">{{movie.title || movie.name}}</span></div>
+              <div v-if="movie.title != movie.original_title"> <span class="white bold">Titolo originale:</span> <span class="white smallSize">{{movie.original_title || movie.original_name}}</span></div>
+              <div class="overview" v-if="movie.overview != ''"><span class="white bold">Overview:</span> <span class="white smallSize">{{movie.overview}}</span></div>
               <div>
                 <span v-if="movie.vote_average != 0" class="white bold">Rating:</span>
                 <i class="fas fa-star" v-if="movie.vote_average > 0"></i>
@@ -38,8 +38,9 @@
                 <span v-if="movie.vote_average == 0" class="white bold">Rating not available</span>
               </div>
               <div> <span class="bold white">Lingua originale:</span> <img :src="movie.original_language" alt=""> </div>
-              <div v-for="actor in cast" class="bold white">{{actor.name}};</div>
-              <div v-for="genre in genres" class="bold white">{{genre}};</div>
+              <div><span class="white bold">Cast:</span> <span v-for="actor in cast" class="white smallSize" v-if="actor != 'null'">{{actor}};</span></div>
+              <div><span class="white bold">Genre:</span> <span v-for="genre in genres" class="white smallSize">{{genre}};
+              </span></div>
             </div>
           </div>
         </div>
