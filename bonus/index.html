@@ -17,12 +17,15 @@
         <header>
           <div>
             <span> BOOLFLIX </span>
+            <select @change="console" v-model="selected">
+              <option v-for="option in genresTotal" :value="option.id">{{option.name}}</option>
+            </select>
             <input v-model="inputSearch" type="text" name="" value="" placeholder="search" @keyup="cercaFilm">
           </div>
         </header>
 
         <div id="film">
-          <div v-for ="movie in totalDb" class="contenitore" @mouseenter="genresCast(movie.type, movie.id)">
+          <div v-for ="movie in totalDb" class="contenitore" @mouseenter="genresCast(movie.type, movie.id)" v-if="(movie.genre_ids.includes(selected) || selected === '' || selected === 0)">
             <div class="locandina"> <img :src="movie.poster_path == 'https://image.tmdb.org/t/p/w342null' ? 'img/Boolflix.png' : movie.poster_path" alt=""> </div>
             <div class="informazioni">
               <div> <span class="white bold">Titolo:</span> <span class="white smallSize">{{movie.title || movie.name}}</span></div>
