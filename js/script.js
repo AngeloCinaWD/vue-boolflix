@@ -6,7 +6,18 @@ var app = new Vue ({
     totalDb: [],
     inputSearch: "",
     cast: [],
-    genres: []
+    genres: [],
+    selected: "",
+    genresTotal: [{id: 0, name: "All"}]
+  },
+  mounted: function() {
+    axios.get("https://api.themoviedb.org/3/genre/movie/list?api_key=00fc6f8f5568da14692dfb2724b20a69&language=it-IT")
+    .then((risposta) => {
+      // console.log(risposta.data.genres);
+      this.genresTotal = [...this.genresTotal, ...risposta.data.genres];
+      console.log('THIS.GENRESTOTAL', this.genresTotal);
+      console.log(this.selected);
+    })
   },
   methods: {
     cercaFilm: function () {
@@ -90,6 +101,9 @@ var app = new Vue ({
           });
         })
       }
+    },
+    console: function () {
+      console.log(this.selected);
     }
   }
 });
