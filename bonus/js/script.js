@@ -8,7 +8,8 @@ var app = new Vue ({
     cast: [],
     genres: [],
     selected: "",
-    genresTotal: [{id: 0, name: "All"}]
+    genresTotal: [{id: 0, name: "All"}],
+    pageSearch: 1
   },
   mounted: function() {
     axios.get("https://api.themoviedb.org/3/genre/movie/list?api_key=00fc6f8f5568da14692dfb2724b20a69&language=it-IT")
@@ -25,8 +26,8 @@ var app = new Vue ({
         let movies = 'https://api.themoviedb.org/3/search/movie?api_key=00fc6f8f5568da14692dfb2724b20a69&language=it-IT';
         let series = 'https://api.themoviedb.org/3/search/tv?api_key=00fc6f8f5568da14692dfb2724b20a69&language=it-IT';
 
-        let requestMovies = axios.get(movies, {params: {query: this.inputSearch}});
-        let requestSeries = axios.get(series, {params: {query: this.inputSearch}});
+        let requestMovies = axios.get(movies, {params: {query: this.inputSearch, page: this.pageSearch}});
+        let requestSeries = axios.get(series, {params: {query: this.inputSearch, page: this.pageSearch}});
 
         axios.all([requestMovies, requestSeries])
         .then(axios.spread((...responses) => {
@@ -40,6 +41,7 @@ var app = new Vue ({
         this.moviesDb = [];
         this.seriesDb = [];
         this.totalDb = [];
+        this.pageSearch = 1;
       }
     },
     arrayManagement: function () {
@@ -102,8 +104,16 @@ var app = new Vue ({
         })
       }
     },
-    console: function () {
-      console.log(this.selected);
+    // console: function () {
+    //   console.log(this.selected);
+    // },
+    pageUp: function () {
+      this.pageSearch++;
+      this.cercaFilm();
+    },
+    pageDown: function () {
+      this.pageSearch--;
+      this.cercaFilm();
     }
   }
 });

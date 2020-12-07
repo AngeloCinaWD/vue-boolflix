@@ -60,7 +60,7 @@ header input {
 }
 
 .contenitore {
-  width: calc(100% / 6 - 50px);
+  width: calc(100% / 5 - 50px);
   margin: 20px 25px;
   padding: 5px;
   border: 3px solid white;
@@ -171,7 +171,7 @@ header input {
 
 @media all and (min-width: 1350px) and (max-width: 1449px) {
   .contenitore {
-    width: calc(100% / 5 - 20px);
+    width: calc(100% / 4 - 20px);
     margin: 20px 10px;
     padding: 5px;
     border: 3px solid white;
@@ -201,7 +201,7 @@ header input {
 
 @media all and (min-width: 1701px) and (max-width: 1800px) {
   .contenitore {
-    width: calc(100% / 6 - 40px);
+    width: calc(100% / 5 - 40px);
     margin: 20px 20px;
     padding: 5px;
     border: 3px solid white;
