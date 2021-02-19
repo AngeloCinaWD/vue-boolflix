@@ -12,6 +12,7 @@ var app = new Vue ({
     pageSearch: 1
   },
   mounted: function() {
+    this.bestMovie();
     axios.get("https://api.themoviedb.org/3/genre/movie/list?api_key=00fc6f8f5568da14692dfb2724b20a69&language=it-IT")
     .then((risposta) => {
       // console.log(risposta.data.genres);
@@ -21,6 +22,26 @@ var app = new Vue ({
     })
   },
   methods: {
+    bestMovie: function () {
+      let movies = 'https://api.themoviedb.org/3/discover/movie?api_key=00fc6f8f5568da14692dfb2724b20a69&language=it-IT&sort_by=popularity.desc';
+      let series = 'https://api.themoviedb.org/3/discover/tv?api_key=00fc6f8f5568da14692dfb2724b20a69&language=it-IT&sort_by=popularity.desc';
+
+      let requestMovies = axios.get(movies);
+      let requestSeries = axios.get(series);
+
+      axios.all([requestMovies, requestSeries])
+      .then(axios.spread((...responses) => {
+        this.moviesDb = responses[0].data.results;
+        // console.log('THIS.MOVIESDB', this.moviesDb)
+        this.seriesDb = responses[1].data.results;
+        // console.log('THIS.SERIESDB', this.seriesDb)
+        this.arrayManagement();
+        // this.languageFlag();
+        // this.resizePoster();
+        this.totalDb = this.unioneArray();
+        console.log('THIS.TOTALDB', this.totalDb);
+      }))
+    },
     cercaFilm: function () {
       if (this.inputSearch != "") {
         let movies = 'https://api.themoviedb.org/3/search/movie?api_key=00fc6f8f5568da14692dfb2724b20a69&language=it-IT';
