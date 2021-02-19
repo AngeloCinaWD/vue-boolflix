@@ -59,10 +59,11 @@ var app = new Vue ({
           // console.log('THIS.TOTALDB', this.totalDb);
         }))
       } else {
-        this.moviesDb = [];
-        this.seriesDb = [];
-        this.totalDb = [];
-        this.pageSearch = 1;
+        this.bestMovie();
+        // this.moviesDb = [];
+        // this.seriesDb = [];
+        // this.totalDb = [];
+        // this.pageSearch = 1;
       }
     },
     arrayManagement: function () {
