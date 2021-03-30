@@ -18,7 +18,7 @@ var app = new Vue ({
       // console.log(risposta.data.genres);
       this.genresTotal = [...this.genresTotal, ...risposta.data.genres];
       console.log('THIS.GENRESTOTAL', this.genresTotal);
-      console.log(this.selected);
+      // console.log(this.selected);
     })
   },
   methods: {
