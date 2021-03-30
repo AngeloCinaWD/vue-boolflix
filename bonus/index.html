@@ -20,9 +20,9 @@
             <select @change="console" v-model="selected">
               <option v-for="option in genresTotal" :value="option.id">{{option.name}}</option>
             </select>
-            <i class="fas fa-chevron-left white" @click="pageDown" v-if="this.pageSearch != 1 && this.inputSearch != ''"></i>
+            <i class="fas fa-chevron-left white" @click="pageDown" v-if="pageSearch != 1 && inputSearch != ''"></i>
             <span class="white" v-if="this.inputSearch != ''">Cambia pagina</span>
-            <i class="fas fa-chevron-right white" @click="pageUp" v-if="this.inputSearch != ''"></i>
+            <i class="fas fa-chevron-right white" @click="pageUp" v-if="inputSearch != ''"></i>
             <input v-model="inputSearch" type="text" name="" value="" placeholder="search" @keyup="cercaFilm">
           </div>
         </header>
